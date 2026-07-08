@@ -1,12 +1,309 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="vi">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/main.css">
-    <title>Document</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phòng khám Mini</title>
+
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/print.css" media="print">
 </head>
+
 <body>
-    <h1 class="tieude">xin chào CICD - version 0.0.1</h1>
+
+    <header>
+        <h1>Phòng khám Mini</h1>
+        <p>Tiếp nhận bệnh nhân và kê đơn thuốc</p>
+
+        <div>
+            <button data-testid="button-tao-du-lieu-mau">Tạo dữ liệu mẫu</button>
+            <button data-testid="button-xoa-du-lieu">Xóa toàn bộ dữ liệu</button>
+        </div>
+    </header>
+
+    <nav>
+        <button data-section="tiep-nhan">Tiếp nhận bệnh nhân</button>
+        <button data-section="kham-benh">Khám và kê đơn</button>
+        <button data-section="lich-su">Lịch sử đơn thuốc</button>
+    </nav>
+
+    <main>
+
+        <!-- ================= TIẾP NHẬN ================= -->
+
+        <section id="tiep-nhan">
+
+            ```
+            <h2>Tiếp nhận bệnh nhân</h2>
+
+            <form data-testid="form-benh-nhan">
+                <input type="hidden" name="id">
+
+                <div>
+                    <label>Họ tên *</label>
+                    <input type="text" required data-testid="input-ho-ten">
+                </div>
+
+                <div>
+                    <label>Ngày sinh *</label>
+                    <input type="date" required data-testid="input-ngay-sinh">
+                </div>
+
+                <div>
+                    <label>Giới tính</label>
+                    <select>
+                        <option value="nam">Nam</option>
+                        <option value="nu">Nữ</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>Số điện thoại *</label>
+                    <input type="text" required data-testid="input-so-dien-thoai">
+                </div>
+
+                <div>
+                    <label>Địa chỉ</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label>Triệu chứng</label>
+                    <textarea></textarea>
+                </div>
+
+                <div>
+                    <label>Tiền sử bệnh</label>
+                    <textarea></textarea>
+                </div>
+
+                <div>
+                    <label>Dị ứng thuốc</label>
+                    <textarea></textarea>
+                </div>
+
+                <div class="form-error"></div>
+
+                <button type="submit" data-testid="button-luu-benh-nhan">Lưu</button>
+                <button type="reset">Làm mới</button>
+            </form>
+
+            <hr>
+
+            <div>
+                <input type="text" placeholder="Tìm kiếm..." data-testid="input-tim-benh-nhan">
+
+                <select>
+                    <option value="">Tất cả</option>
+                    <option value="cho_kham">Chờ khám</option>
+                    <option value="dang_kham">Đang khám</option>
+                    <option value="da_kham">Đã khám</option>
+                </select>
+            </div>
+
+            <table data-testid="danh-sach-benh-nhan">
+                <thead>
+                    <tr>
+                        <th>Mã</th>
+                        <th>Họ tên</th>
+                        <th>SĐT</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            ```
+
+        </section>
+
+        <!-- ================= KHÁM BỆNH ================= -->
+
+        <section id="kham-benh" data-testid="khu-vuc-kham-benh" hidden>
+
+            ```
+            <h2>Khám bệnh và kê đơn</h2>
+
+            <div id="thong-tin-benh-nhan">
+                <p>Mã: <span></span></p>
+                <p>Họ tên: <span></span></p>
+                <p>Ngày sinh: <span></span></p>
+                <p>SĐT: <span></span></p>
+                <p>Triệu chứng: <span></span></p>
+                <p>Tiền sử bệnh: <span></span></p>
+                <p>Dị ứng thuốc: <span></span></p>
+            </div>
+
+            <form id="form-kham-benh">
+                <div>
+                    <label>Tên bác sĩ *</label>
+                    <input type="text" required data-testid="input-ten-bac-si">
+                </div>
+
+                <div>
+                    <label>Chẩn đoán *</label>
+                    <textarea required data-testid="input-chuan-doan"></textarea>
+                </div>
+
+                <div>
+                    <label>Lời dặn</label>
+                    <textarea></textarea>
+                </div>
+            </form>
+
+            <h3>Thêm thuốc</h3>
+
+            <form id="form-thuoc">
+                <div>
+                    <label>Tên thuốc *</label>
+                    <input type="text" required data-testid="input-ten-thuoc">
+                </div>
+
+                <div>
+                    <label>Hàm lượng</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label>Đơn vị</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label>Số lượng mỗi lần *</label>
+                    <input type="number" min="1" required>
+                </div>
+
+                <div>
+                    <label>Số lần mỗi ngày *</label>
+                    <input type="number" min="1" required>
+                </div>
+
+                <div>
+                    <label>Số ngày dùng *</label>
+                    <input type="number" min="1" required>
+                </div>
+
+                <div>
+                    <label>Cách dùng</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label>Thời điểm dùng</label>
+                    <input type="text">
+                </div>
+
+                <div>
+                    <label>Tổng số lượng</label>
+                    <input type="number" readonly>
+                </div>
+
+                <button type="button" data-testid="button-them-thuoc">Thêm thuốc</button>
+            </form>
+
+            <table data-testid="danh-sach-thuoc">
+                <thead>
+                    <tr>
+                        <th>STT</th>
+                        <th>Tên thuốc</th>
+                        <th>Hàm lượng</th>
+                        <th>Liều dùng</th>
+                        <th>Số ngày</th>
+                        <th>Tổng</th>
+                        <th>Cách dùng</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <div>
+                <button>Lưu nháp</button>
+                <button data-testid="button-hoan-tat-don">Hoàn tất đơn thuốc</button>
+                <button>Hủy</button>
+            </div>
+            ```
+
+        </section>
+
+        <!-- ================= LỊCH SỬ ================= -->
+
+        <section id="lich-su" hidden>
+
+            ```
+            <h2>Lịch sử đơn thuốc</h2>
+
+            <div>
+                <input type="text" placeholder="Tìm kiếm...">
+                <select>
+                    <option value="">Tất cả</option>
+                    <option value="nhap">Nháp</option>
+                    <option value="da_hoan_tat">Hoàn tất</option>
+                    <option value="da_huy">Đã hủy</option>
+                </select>
+            </div>
+
+            <table data-testid="danh-sach-don-thuoc">
+                <thead>
+                    <tr>
+                        <th>Mã đơn</th>
+                        <th>Bệnh nhân</th>
+                        <th>Bác sĩ</th>
+                        <th>Ngày</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            ```
+
+        </section>
+
+    </main>
+
+    <!-- ================= MODAL ================= -->
+
+    <dialog id="modal-don-thuoc">
+
+        <h3>Đơn thuốc</h3>
+
+        <div>
+            <p>Phòng khám Mini</p>
+            <p>Mã đơn: <span></span></p>
+            <p>Ngày: <span></span></p>
+            <p>Bệnh nhân: <span></span></p>
+            <p>Bác sĩ: <span></span></p>
+            <p>Chẩn đoán: <span></span></p>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Thuốc</th>
+                    <th>Liều</th>
+                    <th>Ngày</th>
+                    <th>Tổng</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+        <p>Lời dặn: <span></span></p>
+
+        <button>Đóng</button> <button>In</button>
+
+    </dialog>
+
+    <!-- ================= THÔNG BÁO ================= -->
+
+    <div data-testid="thong-bao-he-thong" aria-live="polite"></div>
+
+    <script type="module" src="./src/js/main.js"></script>
+
 </body>
+
 </html>

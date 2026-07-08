@@ -1,0 +1,245 @@
+/* ===== RESET ===== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, Arial, sans-serif;
+    background: #f5f9fc;
+    color: #1a2b3c;
+}
+
+/* ===== VARIABLES ===== */
+:root {
+    --primary: #2b7de9;
+    --primary-light: #e7f0fd;
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --danger: #e74c3c;
+    --gray: #6c7a89;
+    --border: #dce3ea;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: linear-gradient(90deg, #2b7de9, #2ecc71);
+    color: white;
+    padding: 16px;
+}
+
+header h1 {
+    margin: 0 0 4px;
+}
+
+header button {
+    margin-right: 8px;
+}
+
+/* ===== NAV ===== */
+nav {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    background: white;
+}
+
+nav button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+nav button:hover,
+nav button:focus {
+    background: var(--primary-light);
+    outline: none;
+}
+
+nav button.active {
+    border-bottom: 3px solid var(--primary);
+    color: var(--primary);
+}
+
+/* ===== MAIN ===== */
+main {
+    padding: 16px;
+}
+
+/* ===== FORM ===== */
+form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+form label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+form input,
+form textarea,
+form select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+}
+
+form textarea {
+    min-height: 80px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button[type="submit"],
+[data-testid="button-hoan-tat-don"] {
+    background: var(--primary);
+    color: white;
+}
+
+button[data-testid="button-them-thuoc"] {
+    background: var(--success);
+    color: white;
+}
+
+button.danger {
+    background: var(--danger);
+    color: white;
+}
+
+button.secondary {
+    background: #ecf0f1;
+}
+
+/* ===== TABLE ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th,
+td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+thead {
+    background: var(--primary-light);
+}
+
+/* ===== RESPONSIVE TABLE ===== */
+@media (max-width: 768px) {
+    table thead {
+        display: none;
+    }
+
+    table tr {
+        display: block;
+        margin-bottom: 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 8px;
+    }
+
+    table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0;
+    }
+}
+
+/* ===== BADGE ===== */
+.badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+    color: white;
+}
+
+.badge.cho_kham {
+    background: var(--warning);
+}
+
+.badge.dang_kham {
+    background: var(--primary);
+}
+
+.badge.da_kham {
+    background: var(--success);
+}
+
+.badge.nhap {
+    background: var(--gray);
+}
+
+.badge.da_hoan_tat {
+    background: var(--success);
+}
+
+.badge.da_huy {
+    background: var(--danger);
+}
+
+/* ===== MODAL ===== */
+dialog {
+    border: none;
+    border-radius: 8px;
+    padding: 16px;
+    max-width: 600px;
+    width: 90%;
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* ===== ALERT ===== */
+[data-testid="thong-bao-he-thong"] {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    padding: 12px;
+    border-radius: 6px;
+    color: white;
+}
+
+.alert-success {
+    background: var(--success);
+}
+
+.alert-warning {
+    background: var(--warning);
+}
+
+.alert-error {
+    background: var(--danger);
+}
+
+/* ===== UTIL ===== */
+.hidden {
+    display: none !important;
+}
+
+/* ===== FOCUS ===== */
+:focus {
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+}

@@ -1,0 +1,62 @@
+@media print {
+
+    body {
+        font-family: serif;
+        color: black;
+    }
+
+    header,
+    nav,
+    button,
+    form,
+    input,
+    textarea,
+    select,
+    [data-testid="thong-bao-he-thong"] {
+        display: none !important;
+    }
+
+    main>section {
+        display: none;
+    }
+
+    #modal-don-thuoc {
+        display: block !important;
+        position: static;
+        width: 100%;
+    }
+
+    dialog {
+        border: none;
+        box-shadow: none;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        border: 1px solid black;
+        padding: 6px;
+    }
+
+    h3 {
+        text-align: center;
+    }
+
+    .signature {
+        margin-top: 40px;
+        text-align: right;
+    }
+
+    .signature p {
+        margin: 4px 0;
+    }
+
+    @page {
+        size: A4;
+        margin: 20mm;
+    }
+}
