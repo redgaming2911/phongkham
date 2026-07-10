@@ -47,11 +47,11 @@ import { KHOA_LUU_TRU } from '../constants/hang-so.js';
   throw new Error('Du lieu benh nhan khong hop le');
   }
 
-```
-const danhSach = layTatCaBenhNhan();
-```
 
-```
+const danhSach = layTatCaBenhNhan();
+
+
+
 const daTonTai = danhSach.some((bn) => bn.id === benhNhan.id);
 if (daTonTai) {
   throw new Error('Benh nhan da ton tai');
@@ -61,7 +61,7 @@ danhSach.push(benhNhan);
 khoLuuTru.ghiDanhSach(KHOA_LUU_TRU.BENH_NHAN, danhSach);
 
 return benhNhan;
-```
+
 
 }
 

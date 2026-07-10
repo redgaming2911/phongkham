@@ -86,7 +86,7 @@ Object.keys(loiObj).forEach((tenTruong) => {
 const input = form.querySelector(`[name="${tenTruong}"]`);
 if (!input) return;
 
-```
+
 let span = input.parentElement.querySelector('.loi');
 
 if (!span) {
@@ -96,7 +96,7 @@ if (!span) {
 }
 
 span.textContent = loiObj[tenTruong];
-```
+
 
 });
 }

@@ -22,4 +22,4 @@ jobs:
           ls -la
       # B3: run tests
       - name: Run tests
-        run: npm test
+        run: npm run test

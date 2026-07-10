@@ -66,7 +66,7 @@ try {
 xoaLoiForm(form);
 const duLieu = layDuLieuForm();
 
-```
+
 if (dangSuaId) {
   benhNhanService.capNhatBenhNhan(dangSuaId, duLieu);
   hienThiThongBaoThanhCong('Cap nhat benh nhan thanh cong');
@@ -77,7 +77,7 @@ if (dangSuaId) {
 
 lamMoiFormBenhNhan();
 hienThiDanhSachBenhNhan();
-```
+
 
 } catch (err) {
 hienThiThongBaoLoi(err.message);
