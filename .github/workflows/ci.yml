@@ -4,10 +4,11 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-  runs-on: ubuntu-latest
 
 # job Test
-test:
+jobs:
+  test:
+    runs-on: ubuntu-latest
 steps:
   # B1: Lấy source về
   - name: Clone/Checkout source code
