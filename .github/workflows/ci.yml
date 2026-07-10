@@ -20,6 +20,7 @@ jobs:
           npm --version
           pwd
           ls -la
+          npm install
       # B3: run tests
       - name: Run tests
         run: npm run test
